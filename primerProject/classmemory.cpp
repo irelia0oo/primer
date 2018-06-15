@@ -42,6 +42,6 @@ std::ostream & operator<<(std::ostream & os, const stringbad & st)
 
 void xiti12()
 {
-	//stringbad sb;
-	//stringbad::stringbad("123asa");
+	stringbad sb;
+	stringbad::stringbad("123asa");
 }
