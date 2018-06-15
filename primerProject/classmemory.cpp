@@ -30,7 +30,7 @@ stringbad::~stringbad()
 {
 	cout << str << " " << stringbad::num_strings << endl;
 	stringbad::num_strings--;
-	delete[] str;
+	delete [] str;
 }
 std::ostream & operator<<(std::ostream & os, const stringbad & st)
 {
