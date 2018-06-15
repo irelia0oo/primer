@@ -15,6 +15,12 @@ private:
 public:
 	stringbad();
 	stringbad(const char * s);
+	stringbad(const stringbad & s);
 	~stringbad();
 	friend std::ostream & operator<<(std::ostream & os,const stringbad & st);
+	stringbad operator=(const stringbad & s);
+	//void callme();
 };
+
+void callme1(stringbad & rs);
+void callme2(stringbad rs);
