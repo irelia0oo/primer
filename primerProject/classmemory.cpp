@@ -156,4 +156,5 @@ void xiti12()
 	stringbad s1;
 	cin >> s1;
 	cout << s1;
+	cout << int(stringbad::howmanay());
 }
