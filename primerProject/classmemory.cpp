@@ -43,13 +43,18 @@ stringbad::~stringbad()
 	delete[] str;
 }
 
-stringbad stringbad::operator=(const stringbad & s)
+stringbad & stringbad::operator=(const stringbad & s)
 {
-	this->len = s.len;
-	this->num_strings = s.num_strings;
-	this->str = s.str;
+	if (this == &s)
+		return *this;
+	delete[] str;
 
-	return (*this);
+	this->len = s.len;
+	this->str = new char[this->len + 1];
+	strcpy_s(this->str, this->len + 1, s.str);
+	this->num_strings++;
+
+	return *this;
 }
 
 std::ostream & operator<<(std::ostream & os, const stringbad & st)

@@ -18,7 +18,7 @@ public:
 	stringbad(const stringbad & s);
 	~stringbad();
 	friend std::ostream & operator<<(std::ostream & os,const stringbad & st);
-	stringbad operator=(const stringbad & s);
+	stringbad & operator=(const stringbad & s);
 	//void callme();
 };
 
