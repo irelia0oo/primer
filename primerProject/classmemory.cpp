@@ -122,32 +122,6 @@ void callme2(stringbad rs)
 
 void xiti12()
 {
-	//stringbad sb ;
-	//sb = stringbad("aabbba");
-
-	//return;
-	//stringbad sb1 = { "sb1sb1sb1sb1sb1sb1" };
-	/*stringbad sb2 = { "sb2sb2sb2sb2sb2sb2" };
-	stringbad sb3 = { "sb3sb3sb3sb3sb3sb3" };
-	stringbad sports = { "sb3sb3sb3sb3sb3sb3" };
-
-	cout << "sb1:" << sb1 << endl;
-	cout << "sb2:" << sb2 << endl;
-	cout << "sports:" << sports << endl;
-
-	callme1(sb1);
-	cout << "sb1:" << sb1 << endl;*/
-	//callme2(sb2);
-	//cout << "sb2:" << sb2 << endl;
-
-
-	//stringbad sport = sb1;
-	//cout << "sport:" << sport << endl;
-	//cout << (bool)(sport == sb1) << endl;
-	//stringbad badsb;
-	//badsb = sb1;
-	//cout << "badsb:" << badsb << endl;
-
 	stringbad c1, c2;
 	c2 = "aabbcc";
 	c1 = c2;
@@ -157,4 +131,33 @@ void xiti12()
 	cin >> s1;
 	cout << s1;
 	cout << int(stringbad::howmanay());
+	return;
+
+	stringbad sb ;
+	sb = stringbad("aabbba");
+
+	return;
+	stringbad sb1 = { "sb1sb1sb1sb1sb1sb1" };
+	stringbad sb2 = { "sb2sb2sb2sb2sb2sb2" };
+	stringbad sb3 = { "sb3sb3sb3sb3sb3sb3" };
+	stringbad sports = { "sb3sb3sb3sb3sb3sb3" };
+
+	cout << "sb1:" << sb1 << endl;
+	cout << "sb2:" << sb2 << endl;
+	cout << "sports:" << sports << endl;
+
+	callme1(sb1);
+	cout << "sb1:" << sb1 << endl;
+	callme2(sb2);
+	cout << "sb2:" << sb2 << endl;
+
+
+	stringbad sport = sb1;
+	cout << "sport:" << sport << endl;
+	cout << (bool)(sport == sb1) << endl;
+	stringbad badsb;
+	badsb = sb1;
+	cout << "badsb:" << badsb << endl;
+
+	
 }
