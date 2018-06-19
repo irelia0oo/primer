@@ -122,6 +122,56 @@ void callme2(stringbad rs)
 
 void xiti12()
 {
+	stringbad name;
+	cout << "Your name is" << endl;
+	cin >> name;
+	cout << name << ",please enter " << ArSize << " line to quit" << endl;
+	cin.clear();
+	stringbad sayings[ArSize];
+	char temp[Maxlen];
+	int i = 0;
+	for (i = 0; i < ArSize;i++)
+	{
+		cout << i + 1 << "£º";
+		cin.get(temp, Maxlen);
+		while (cin && cin.get() != '\n')
+			continue;
+		if (!cin || temp[0] == '\0')
+			break;
+		else
+			sayings[i] = temp;
+	}
+	int total = i;
+	if (total > 0)
+	{
+		cout << "here are you sayings:\n";
+		for (i = 0;i <total;i++)
+		{
+			cout << sayings[i] << endl;
+		}
+
+		stringbad * shorttest = &sayings[0];
+		stringbad * first = &sayings[0];
+		for (i = 0; i < total; i++)
+		{
+			if (sayings[i].length() < shorttest->length())
+				shorttest = &sayings[i];
+			if (sayings[i] < *first)
+				first = &sayings[i];
+		}
+		cout << "shorttest ==" << shorttest << endl;
+		cout << "first ==" << first << endl;
+		srand(time(0));
+		int choice = rand() % total;
+		stringbad * favorite = new stringbad(sayings[choice]);
+		cout << "favorite ==" << favorite << endl;
+		delete favorite;
+	}
+	else
+		cout << "no much to say" << endl;
+	cout << "bye bye \n";
+	return;
+
 	stringbad c1, c2;
 	c2 = "aabbcc";
 	c1 = c2;

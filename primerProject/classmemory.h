@@ -1,7 +1,8 @@
 #pragma once
 
 #include "stdafx.h"
-
+#include <cstdlib>
+//#include <string1.h>
 using namespace std;
 
 void xiti12();
@@ -34,3 +35,6 @@ public:
 
 void callme1(stringbad & rs);
 void callme2(stringbad rs);
+
+const int ArSize = 10;
+const int Maxlen = 81;
