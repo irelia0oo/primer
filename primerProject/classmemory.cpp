@@ -98,7 +98,7 @@ bool operator==(const stringbad & a, const stringbad & b)
 
 std::ostream & operator<<(std::ostream & os, const stringbad & st)
 {
-	os << "Êä³ö½á¹û " << st.str << " " << stringbad::num_strings << endl;
+	os<< st.str << endl;
 	return os;
 }
 std::istream & operator>>(std::istream & is, stringbad & st)
@@ -164,7 +164,7 @@ void xiti12()
 		srand(time(0));
 		int choice = rand() % total;
 		stringbad * favorite = new stringbad(sayings[choice]);
-		cout << "favorite ==" << favorite << endl;
+		cout <<"sayings[choice]==="<< sayings[choice]<< "  choice =="<< choice<<"  favorite ==" << favorite <<"  *favorite =="<< *favorite << endl;
 		delete favorite;
 	}
 	else
