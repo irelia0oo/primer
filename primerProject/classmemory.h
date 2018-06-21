@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include <cstdlib>
+#include<new>
 //#include <string1.h>
 using namespace std;
 
@@ -38,3 +39,18 @@ void callme2(stringbad rs);
 
 const int ArSize = 10;
 const int Maxlen = 81;
+
+
+void xiticlassputr();
+
+const int BUF = 512;
+class JustTesting
+{
+private:
+	string words;
+	int number;
+public:
+	JustTesting(const string & a = "Jest Testing", int b = 0) { words = a; number = b; cout << words << " Constructed"<<endl; }
+	~JustTesting() { cout << words << " destoryed!" << endl; }
+	void show() { cout << words << " ," << number << endl; }
+};

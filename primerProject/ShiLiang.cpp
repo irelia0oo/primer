@@ -135,7 +135,7 @@ void shiliang()
 	//return;
 
 
-	srand(time(0));
+	srand(time(NULL));
 	double direction;
 	vector step;
 	vector result(0.0, 0.0);

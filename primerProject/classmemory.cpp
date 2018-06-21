@@ -122,6 +122,8 @@ void callme2(stringbad rs)
 
 void xiti12()
 {
+	xiticlassputr();
+	return;
 	stringbad name;
 	cout << "Your name is" << endl;
 	cin >> name;
@@ -161,7 +163,7 @@ void xiti12()
 		}
 		cout << "shorttest ==" << shorttest << endl;
 		cout << "first ==" << first << endl;
-		srand(time(0));
+		srand(time(NULL));
 		int choice = rand() % total;
 		stringbad * favorite = new stringbad(sayings[choice]);
 		cout <<"sayings[choice]==="<< sayings[choice]<< "  choice =="<< choice<<"  favorite ==" << favorite <<"  *favorite =="<< *favorite << endl;
@@ -210,4 +212,34 @@ void xiti12()
 	cout << "badsb:" << badsb << endl;
 
 	
+}
+
+
+void xiticlassputr()
+{
+	char * buffer = new char[BUF];
+	JustTesting *pc1, *pc2;
+	pc1 = new(buffer) JustTesting;//new 定位符
+	pc2 = new JustTesting("heapl", 20);//new 分配内存
+
+	cout << "memory block address:\n" << "buffer:"
+		<< (void *)buffer << "  heapl:" << pc2 << endl;
+	cout << "memory contents:\n";
+	cout << pc1 << ":";
+	pc1->show();
+	cout << pc2 << ":";
+	pc2->show();
+
+	JustTesting *pc3, *pc4;
+	pc3 = new(buffer)JustTesting("bad ideal", 6);
+	pc4 = new JustTesting("heap2", 10);
+	cout << "memory contents:\n";
+	cout << pc3 << ":";
+	pc3->show();
+	cout << pc4 << ":";
+	pc4->show();
+
+	delete[] buffer;
+	delete pc2;
+	delete pc4;
 }
