@@ -229,9 +229,12 @@ void xiticlassputr()
 	pc1->show();
 	cout << pc2 << ":";
 	pc2->show();
+	pc1->~JustTesting();
+	delete pc2;
+	cout << endl;
 
 	JustTesting *pc3, *pc4;
-	pc3 = new(buffer)JustTesting("bad ideal", 6);
+	pc3 = new(buffer + sizeof(JustTesting))JustTesting("bad ideal", 6);
 	pc4 = new JustTesting("heap2", 10);
 	cout << "memory contents:\n";
 	cout << pc3 << ":";
@@ -239,7 +242,8 @@ void xiticlassputr()
 	cout << pc4 << ":";
 	pc4->show();
 
-	delete[] buffer;
-	delete pc2;
+	pc3->~JustTesting();
 	delete pc4;
+	delete[] buffer;
+
 }
