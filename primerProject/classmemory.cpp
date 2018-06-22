@@ -123,6 +123,7 @@ void callme2(stringbad rs)
 void xiti12()
 {
 	xiticlassputr();
+	class_fifo();
 	return;
 	stringbad name;
 	cout << "Your name is" << endl;
@@ -217,6 +218,7 @@ void xiti12()
 
 void xiticlassputr()
 {
+	return;
 	char * buffer = new char[BUF];
 	JustTesting *pc1, *pc2;
 	pc1 = new(buffer) JustTesting;//new ¶¨Î»·û
@@ -245,5 +247,23 @@ void xiticlassputr()
 	pc3->~JustTesting();
 	delete pc4;
 	delete[] buffer;
+
+}
+
+
+int queue::queuecout() const
+{
+	return 0;
+}
+bool queue::enqueue(const item &item)
+{
+	return true;
+}
+bool queue::dequeue(item &item)
+{
+	return true;
+}
+void class_fifo()
+{
 
 }

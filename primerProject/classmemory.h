@@ -42,6 +42,7 @@ const int Maxlen = 81;
 
 
 void xiticlassputr();
+void class_fifo();
 
 const int BUF = 512;
 class JustTesting
@@ -53,4 +54,27 @@ public:
 	JustTesting(const string & a = "Jest Testing", int b = 0) { words = a; number = b; cout << words << " Constructed"<<endl; }
 	~JustTesting() { cout << words << " destoryed!" << endl; }
 	void show() { cout << words << " ," << number << endl; }
+};
+
+class queue
+{
+	enum {q_size = 10};
+private:
+	struct node
+	{
+		item item;
+		struct node * next;
+	};
+	node * front;
+	node * rear;
+	int items;
+	const int qsize;
+public:
+	queue(int qs = q_size) : qsize(qs){ front = rear = nullptr; items = 0; }//函数参数后面qsize(qs),表示把 qsize初始化为qs
+	~queue(){}
+	bool isemptr() const { return (q_size >= 0 && q_size < 10); }
+	bool isfull() const { return (q_size >= 10); }
+	int queuecout() const;
+	bool enqueue(const item &item);
+	bool dequeue(item &item);
 };
