@@ -98,7 +98,7 @@ bool operator==(const stringbad & a, const stringbad & b)
 
 std::ostream & operator<<(std::ostream & os, const stringbad & st)
 {
-	os<< st.str << endl;
+	os << st.str << endl;
 	return os;
 }
 std::istream & operator>>(std::istream & is, stringbad & st)
@@ -133,7 +133,7 @@ void xiti12()
 	stringbad sayings[ArSize];
 	char temp[Maxlen];
 	int i = 0;
-	for (i = 0; i < ArSize;i++)
+	for (i = 0; i < ArSize; i++)
 	{
 		cout << i + 1 << "£º";
 		cin.get(temp, Maxlen);
@@ -148,7 +148,7 @@ void xiti12()
 	if (total > 0)
 	{
 		cout << "here are you sayings:\n";
-		for (i = 0;i <total;i++)
+		for (i = 0; i <total; i++)
 		{
 			cout << sayings[i] << endl;
 		}
@@ -167,7 +167,7 @@ void xiti12()
 		srand(time(NULL));
 		int choice = rand() % total;
 		stringbad * favorite = new stringbad(sayings[choice]);
-		cout <<"sayings[choice]==="<< sayings[choice]<< "  choice =="<< choice<<"  favorite ==" << favorite <<"  *favorite =="<< *favorite << endl;
+		cout << "sayings[choice]===" << sayings[choice] << "  choice ==" << choice << "  favorite ==" << favorite << "  *favorite ==" << *favorite << endl;
 		delete favorite;
 	}
 	else
@@ -186,7 +186,7 @@ void xiti12()
 	cout << int(stringbad::howmanay());
 	return;
 
-	stringbad sb ;
+	stringbad sb;
 	sb = stringbad("aabbba");
 
 	return;
@@ -212,7 +212,7 @@ void xiti12()
 	badsb = sb1;
 	cout << "badsb:" << badsb << endl;
 
-	
+
 }
 
 
@@ -253,16 +253,16 @@ void xiticlassputr()
 
 int queue::queuecout() const
 {
-	return 0;
+	return peoples;
 }
-bool queue::enqueue(const item &item)
+bool queue::enqueue(const people &people)
 {
 	if (isfull())
 		return false;
 	node *add = new node;
-	add->item = item;
+	add->people = people;
 	add->next = NULL;
-	items++;
+	peoples++;
 	if (front == NULL)
 		front = add;
 	else
@@ -270,16 +270,16 @@ bool queue::enqueue(const item &item)
 	rear = add;
 	return true;
 }
-bool queue::dequeue(item &item)
+bool queue::dequeue(people &people)
 {
 	if (front == NULL)
 		return false;
-	item = front->item;
-	items--;
+	people = front->people;
+	peoples--;
 	node * temp = front;
 	front = front->next;
 	delete temp;
-	if (items == 0)
+	if (peoples == 0)
 		rear = NULL;
 	return true;
 }
@@ -293,7 +293,83 @@ queue::~queue()
 		delete temp;
 	}
 }
+bool queue::isemptr() const
+{
+	return peoples == 0;
+}
+bool queue::isfull() const
+{
+	return peoples == qsize;
+}
+bool newcustomer(int x)
+{
+	return ((std::rand() * x) / RAND_MAX < 1);
+}
 void class_fifo()
 {
+	using namespace std;
+	srand(time(NULL));
+	cout << "put the line maxnumber:" << endl;
+	int qs;
+	cin >> qs;
+	queue line(qs);
+	cout << "put the time:" << endl;
+	int hour;
+	cin >> hour;
+	long cyclelimit = MIN_PER_HR * hour;
+	double perhour;
+	cout << "enter the average number of an hour" << endl;
+	cin >> perhour;
 
+	double min_per_cust;
+	min_per_cust = MIN_PER_HR;
+	people temp;
+	long turnaways = 0;
+	long customers = 0;
+	long serverd = 0;
+	long sum_line = 0;
+	int wait_time = 0;
+	long line_wait = 0;
+
+	for (int cycle = 0; cycle < cyclelimit; cycle++)
+	{
+		if (newcustomer(min_per_cust))
+		{
+			if (line.isfull())
+				turnaways++;
+			else
+			{
+				customers++;
+				temp.set(cycle);
+				line.enqueue(temp);
+			}
+		}
+		if (wait_time <= 0 && !line.isemptr())
+		{
+			line.dequeue(temp);
+			wait_time = temp.ptime();
+			line_wait += cycle - temp.when();
+			serverd++;
+		}
+		if (wait_time > 0)
+			wait_time--;
+		sum_line += line.queuecout();
+	}
+	if (customers > 0)
+	{
+		cout << " customers ==" << customers << endl;
+		cout << " serverd ==" << serverd << endl;
+		cout << " turnaways ==" << turnaways << endl;
+
+		cout.precision(2);
+		cout.setf(ios_base::fixed, ios_base::floatfield);
+		cout << "average queue size"
+			<< (double)sum_line / cyclelimit << endl;
+		cout << "average wait time "
+			<< (double)line_wait / serverd << endl;
+	}
+	else
+		cout << "no customers" << endl;
+
+	cout << "bye bye" << endl;
 }

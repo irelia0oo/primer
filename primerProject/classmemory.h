@@ -56,27 +56,48 @@ public:
 	void show() { cout << words << " ," << number << endl; }
 };
 
+class Customer
+{
+private:
+	long arrive;
+	int processtime;
+public:
+	Customer() { arrive = processtime = 0; }
+	~Customer() {}
+	void set(long when)
+	{
+		arrive = when;
+		processtime = std::rand() % 3 + 1;
+	}
+	long when() const { return arrive; }
+	int ptime() const { return processtime; }
+};
+typedef Customer people;
+
 class queue
 {
 	enum {q_size = 10};
 private:
 	struct node
 	{
-		item item;
+		people people;
 		struct node * next;
 	};
 	node * front;
 	node * rear;
-	int items;
+	int peoples;
 	const int qsize;
 	queue(const queue & a):qsize(0){}//伪私有类 防止生成默认的复制构造函数 又不让调用 简单的说 进制类复制
 	queue & operator=(const queue & a) { return *this; }//伪私有类 防止生成默认的复制构造函数 又不让调用 简单的说 进制类复制
 public:
-	queue(int qs = q_size) : qsize(qs){ front = rear = nullptr; items = 0; }//函数参数后面qsize(qs),表示把 qsize初始化为qs
+	queue(int qs = q_size) : qsize(qs){ front = rear = nullptr; peoples = 0; }//函数参数后面qsize(qs),表示把 qsize初始化为qs
 	~queue();
-	bool isemptr() const { return (q_size >= 0 && q_size < 10); }
-	bool isfull() const { return (q_size >= 10); }
+	bool isemptr() const;
+	bool isfull() const;
 	int queuecout() const;
-	bool enqueue(const item &item);
-	bool dequeue(item &item);
+	bool enqueue(const people &people);
+	bool dequeue(people &people);
 };
+
+bool newcustomer(int x);
+const int MIN_PER_HR = 60;
