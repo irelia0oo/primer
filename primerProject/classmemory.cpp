@@ -257,11 +257,41 @@ int queue::queuecout() const
 }
 bool queue::enqueue(const item &item)
 {
+	if (isfull())
+		return false;
+	node *add = new node;
+	add->item = item;
+	add->next = NULL;
+	items++;
+	if (front == NULL)
+		front = add;
+	else
+		rear->next = add;
+	rear = add;
 	return true;
 }
 bool queue::dequeue(item &item)
 {
+	if (front == NULL)
+		return false;
+	item = front->item;
+	items--;
+	node * temp = front;
+	front = front->next;
+	delete temp;
+	if (items == 0)
+		rear = NULL;
 	return true;
+}
+queue::~queue()
+{
+	node * temp;
+	while (front != NULL)
+	{
+		temp = front;
+		front = front->next;
+		delete temp;
+	}
 }
 void class_fifo()
 {
