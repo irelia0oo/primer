@@ -122,6 +122,7 @@ void callme2(stringbad rs)
 
 void xiti12()
 {
+	return;
 	xiticlassputr();
 	class_fifo();
 	return;
