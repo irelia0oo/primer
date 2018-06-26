@@ -2,11 +2,21 @@
 #include "derivedclass.h"
 
 
-Tabletennisplayer::Tabletennisplayer(const string &fn, const string  &ln, bool ht) : firstname(fn), lastname(ln), hastable(ht)
+format Setformat()
 {
-	
+	return cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
 }
 
+void restore(format f, precis p)
+{
+	cout.setf(f, std::ios_base::floatfield);
+	cout.precision(p);
+}
+
+Tabletennisplayer::Tabletennisplayer(const string &fn, const string  &ln, bool ht) : firstname(fn), lastname(ln), hastable(ht)
+{
+
+}
 
 void Tabletennisplayer::Name() const
 {
@@ -23,19 +33,19 @@ std::ostream & operator<<(std::ostream & os, const Tabletennisplayer & tp)
 	return os;
 }
 
-RatedPlayer::RatedPlayer(unsigned int r, const string & fn, const string & ln, bool ht):Tabletennisplayer(fn,ln,ht)
+RatedPlayer::RatedPlayer(unsigned int r, const string & fn, const string & ln, bool ht) :Tabletennisplayer(fn, ln, ht)
 {
 	rating = r;
 }
 
-RatedPlayer::RatedPlayer(unsigned int r, const Tabletennisplayer & tp):Tabletennisplayer(tp),rating(r)
+RatedPlayer::RatedPlayer(unsigned int r, const Tabletennisplayer & tp) : Tabletennisplayer(tp), rating(r)
 {
 
 }
 
 std::ostream & operator<<(std::ostream & os, const RatedPlayer & rp)
 {
-	os << rp.rating<<"  ";
+	os << rp.rating << "  ";
 	Tabletennisplayer now;
 	now = Tabletennisplayer(rp);
 	cout << now;
@@ -43,8 +53,12 @@ std::ostream & operator<<(std::ostream & os, const RatedPlayer & rp)
 }
 
 
+
+
 void deriveclass()
 {
+	classis_a_brass();
+	return;
 	using std::cout;
 	Tabletennisplayer player1{ "Chuck","Blizzard",true };
 	Tabletennisplayer player2{ "Tara","Boomdea",false };
@@ -84,3 +98,109 @@ void deriveclass()
 	cout << "bye bye!!" << endl;
 }
 
+
+Brass::Brass(const std::string & s , long an , double bal ) :fullname(s), acctnum(an),balance(bal)
+{
+}
+void Brass::Deposit(double amt)
+{
+	if (amt < 0)
+		cout << "Negative deposit not allowed:"
+		<< "deposit is cancelled:\n";
+	else
+		balance += amt;
+}
+void Brass::Withdraw(double amt)
+{
+	format initialState = Setformat();
+	precis prec = cout.precision(2);
+	if (amt < 0)
+		cout << "Withdraw amount must be positive;"
+		<< "Withdraw cancelled.\n";
+	else if (amt <= balance)
+		balance -= amt;
+	else
+		cout << "whithdraw amount of $" << amt
+		<< "exceeds yours balance.\n"
+		<< "withdrawl canceled.\n";
+	restore(initialState, prec);
+}
+double Brass::Balance() const
+{
+	return balance;
+}
+void Brass::ViewAcct() const
+{
+	format initialState = Setformat();
+	precis prec = cout.precision(2);
+
+	cout << "Client :" << fullname << endl;
+	cout << "Account Number:" << acctnum << endl;
+	cout << "Balance :" << balance << endl;
+
+	restore(initialState, prec);
+}
+BrassPlus::BrassPlus(const std::string & s, long an, double bal, double ml, double r, double ow) : Brass(s,an,bal)
+{
+	maxLoan = ml;
+	rate = r;
+	owesBank = ow;
+}
+BrassPlus::BrassPlus(Brass &tp, double ml , double r , double ow ) : Brass(tp),maxLoan(ml),rate(r),owesBank(ow)
+{
+}
+void BrassPlus::ViewAcct()const
+{
+	format initialState = Setformat();
+	precis prec = cout.precision(2);
+
+	Brass::ViewAcct();
+	cout << "maxinum loan:$" << maxLoan << endl;
+	cout << "Owed to bank:$" << owesBank << endl;
+	cout.precision(3);
+	cout << "Loan Rate:" << 100 * rate << endl;
+	restore(initialState, prec);
+}
+void BrassPlus::Withdraw(double amt)
+{
+	format initialState = Setformat();
+	precis prec = cout.precision(2);
+
+	double bal = Brass::Balance();
+	if (amt <= bal)
+		Brass::Withdraw(amt);
+	else if (amt <= bal + maxLoan - owesBank)
+	{
+		double advance = amt - bal;
+		owesBank += advance * (1 + rate);
+		cout << "Bank advance:$" << advance << endl;
+		cout << "Finance charge:$" << advance * rate << endl;
+		Deposit(advance);
+		Brass::Withdraw(amt);
+	}
+	else
+		cout << "Credit limit exceeded.Transaction canceled." << endl;
+
+	restore(initialState, prec);
+}
+
+void classis_a_brass()
+{
+	Brass Pigggy{ "procelot pigg",381229,4000.00 };
+	BrassPlus Hoggy{ "horatio hogg",382288,3000.00 };
+	Pigggy.ViewAcct();
+	cout << endl;
+	Hoggy.ViewAcct();
+	cout << endl;
+	
+	Hoggy.Deposit(1000);
+	cout << "now balance:" << Hoggy.Balance() << endl;
+	Pigggy.Withdraw(4200);
+	cout << "pigg account balance==" << Pigggy.Balance() << endl;
+	Hoggy.Withdraw(4200);
+	cout << "Hoggy account balance==" << Hoggy.Balance() << endl;
+
+	cout << endl;
+	Hoggy.ViewAcct();
+	cout << endl;
+}
