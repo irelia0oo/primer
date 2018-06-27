@@ -48,6 +48,7 @@ class Brass
 private:
 	std::string fullname;
 	long int acctnum;
+protected:
 	double balance;
 public:
 	Brass(const std::string & s = "nullbody", long an = -1, double bal = 0.0);
