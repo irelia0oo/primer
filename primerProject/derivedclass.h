@@ -55,7 +55,9 @@ public:
 	virtual void Withdraw(double amt);
 	double Balance() const;
 	virtual void ViewAcct() const;
-	virtual ~Brass(){}
+	virtual ~Brass() { 
+		//cout << "基类函数析构函数" << endl; 
+	}
 };
 
 class BrassPlus : public Brass
@@ -72,6 +74,9 @@ public:
 	void ResetMax(double m) { maxLoan = m; }
 	void ResetRate(double r) { rate = r; }
 	void ResetOwes() { owesBank = 0; }
+	virtual ~BrassPlus(){ 
+		//cout << "派生类函数析构函数" << endl;
+	}
 };
 
 

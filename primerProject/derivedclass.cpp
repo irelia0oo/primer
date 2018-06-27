@@ -158,7 +158,7 @@ void BrassPlus::ViewAcct()const
 	cout << "maxinum loan:$" << maxLoan << endl;
 	cout << "Owed to bank:$" << owesBank << endl;
 	cout.precision(3);
-	cout << "Loan Rate:" << 100 * rate << endl;
+	cout << "Loan Rate:" << 100 * rate << "%"<<endl;
 	restore(initialState, prec);
 }
 void BrassPlus::Withdraw(double amt)
@@ -186,6 +186,18 @@ void BrassPlus::Withdraw(double amt)
 
 void classis_a_brass()
 {
+	BrassPlus b{ "zhang",13456,5000,500,0.1,0 };
+	Brass * bb;
+	bb = &b;
+	bb->ViewAcct();
+	cout << endl;
+	Brass bbb = b;
+	bbb.ViewAcct();
+	return;
+	BrassPlus * a = new BrassPlus{ "irelia",100001,253.11 ,1200,0.25,0};
+	a->ViewAcct();
+	delete a;
+	return;
 	Brass Pigggy{ "procelot pigg",381229,4000.00 };
 	BrassPlus Hoggy{ "horatio hogg",382288,3000.00 };
 	Pigggy.ViewAcct();
