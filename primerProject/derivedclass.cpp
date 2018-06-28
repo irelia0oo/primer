@@ -57,6 +57,8 @@ std::ostream & operator<<(std::ostream & os, const RatedPlayer & rp)
 
 void deriveclass()
 {
+	class_b_base();
+	return;
 	classis_a_brass();
 	return;
 	using std::cout;
@@ -215,4 +217,124 @@ void classis_a_brass()
 	cout << endl;
 	Hoggy.ViewAcct();
 	cout << endl;
+}
+
+
+baseDMA::baseDMA(const char * c , int r)
+{
+	int len = strlen(c) + 1;
+	lable = new char[len];
+	strcpy_s(lable, len, c);
+	rating = r;
+}
+baseDMA::baseDMA(const baseDMA & r)
+{
+	int len = strlen(r.lable) + 1;
+	lable = new char[len];
+	strcpy_s(lable, len, r.lable);
+	rating = r.rating;
+}
+baseDMA::~baseDMA()
+{
+	delete[] lable;
+}
+baseDMA & baseDMA::operator=(const baseDMA & r)
+{
+	if (this == &r)
+		return *this;
+
+	delete[] lable;
+
+	int len = strlen(r.lable) + 1;
+	lable = new char[len];
+	strcpy_s(lable, len, r.lable);
+	rating = r.rating;
+
+	return *this;
+}
+std::ostream & operator<<(std::ostream & os, const baseDMA & r)
+{
+	os << "lable =="<<r.lable << " rating ==" << r.rating;
+	return os;
+}
+lacksDMA::lacksDMA(const char *c, const char *l, int r) : baseDMA(l,r)
+{
+	strcpy_s(this->color, 39, c);
+	color[39] = '\0';
+}
+lacksDMA::lacksDMA(const char *c, const baseDMA & r) 
+	: baseDMA(r)
+{
+	strcpy_s(this->color, COL_LEN - 1, c);
+	color[COL_LEN - 1] = '\0';
+}
+lacksDMA::~lacksDMA()
+{
+
+}
+std::ostream & operator<<(std::ostream & os, const lacksDMA & lr)
+{
+	os << (const baseDMA &)lr << " ";
+	os << "color ==" << lr.color;
+	return os;
+}
+
+hasDMA::hasDMA(const char *s, const char *l, int r ) 
+	: baseDMA(l,r)
+{
+	int len = strlen(s) + 1;
+	style = new char[len];
+	strcpy_s(style, len, s);
+}
+hasDMA::hasDMA(const char *s, const baseDMA & r)
+	:baseDMA(r)
+{
+	int len = strlen(s) + 1;
+	style = new char[len];
+	strcpy_s(style, len, s);
+}
+hasDMA::hasDMA(const hasDMA & h)
+{
+	int len = strlen(h.style) + 1;
+	style = new char[len];
+	strcpy_s(style, len, h.style);
+}
+hasDMA::~hasDMA()
+{
+	delete[] style;
+}
+hasDMA & hasDMA::operator=(const hasDMA & r)
+{
+	if (this == &r)
+		return *this;
+	baseDMA::operator=(r);//或者可以这样写 *this = r;
+	delete[] style;
+	int len = strlen(r.style) + 1;
+	style = new char[len];
+	strcpy_s(style, len, r.style);
+	return *this;
+}
+std::ostream & operator<<(std::ostream & os, const hasDMA & sr)
+{
+	os << (const baseDMA &)sr << " ";
+	os << "style =="<<sr.style;
+	return os;
+}
+
+void class_b_base()
+{
+	baseDMA shirt("Portabelly", 8); 
+	lacksDMA balloon("red", "Blimpo", 4); 
+	hasDMA map("Mercator", "Buffalo Keys", 5); 
+	cout << "shirt is:  " << shirt << endl;
+	cout << "balloon is:  " << balloon << endl;
+	cout << "map is:  " << map << endl;
+
+	lacksDMA balloon2(balloon);
+	cout << "balloon2 is:  " << balloon2 << endl;
+
+	hasDMA map2;
+	cout << "map2 is:  " << map2 << endl;
+
+	cout << "bye bye" << endl;
 }

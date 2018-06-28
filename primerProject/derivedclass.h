@@ -82,3 +82,42 @@ public:
 
 
 
+void class_b_base();
+
+class baseDMA
+{
+private:
+	char * lable;
+	int rating;
+public:
+	baseDMA(const char * c = "null",int r = 0);
+	baseDMA(const baseDMA & r);
+	virtual ~baseDMA();
+	baseDMA & operator=(const baseDMA & r);
+	friend std::ostream & operator<<(std::ostream & os, const baseDMA & r);
+};
+
+class lacksDMA : public baseDMA
+{
+private:
+	enum { COL_LEN = 40 };
+	char color[COL_LEN];
+public:
+	lacksDMA(const char *c = "black", const char *l = "null", int r = 0);
+	lacksDMA(const char *c, const baseDMA & r);
+	virtual ~lacksDMA();
+	friend std::ostream & operator<<(std::ostream & os, const lacksDMA & lr);
+};
+
+class hasDMA : public baseDMA
+{
+private:
+	char * style;
+public:
+	hasDMA(const char *s = "none", const char *l = "null", int r = 0);
+	hasDMA(const char *c, const baseDMA & r);
+	hasDMA(const hasDMA & h);
+	virtual ~hasDMA();
+	hasDMA & operator=(const hasDMA & r);
+	friend std::ostream & operator<<(std::ostream & os, const hasDMA & sr);
+};
