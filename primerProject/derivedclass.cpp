@@ -57,6 +57,7 @@ std::ostream & operator<<(std::ostream & os, const RatedPlayer & rp)
 
 void deriveclass()
 {
+	return;
 	class_b_base();
 	return;
 	classis_a_brass();
