@@ -37,7 +37,7 @@ public:
 
 void setstudent(student & sa, int n);
 
-
+void codereuse_classmode_student2();
 class student2 : private string, private valarray<double>
 {
 

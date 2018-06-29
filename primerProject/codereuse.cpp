@@ -4,6 +4,8 @@
 
 void codereuse_classmode()
 {
+	codereuse_classmode_student2();
+	return;
 	codereuse_classmode_student();
 	return;
 	valarray<double> weight = { 2.5,3.4,11,225.1,0.11,22 };
@@ -118,4 +120,12 @@ ostream & operator<<(ostream & os, student &stu)
 	os << "Name:" << stu.name << endl;
 	stu.arr_out(os);
 	return os;
+}
+
+
+
+void codereuse_classmode_student2()
+{
+
+	return;
 }
