@@ -4,6 +4,8 @@
 
 void codereuse_classmode()
 {
+	niukeprogram();
+	//return;
 	codereuse_classmode_student2();
 	return;
 	codereuse_classmode_student();
@@ -123,9 +125,100 @@ ostream & operator<<(ostream & os, student &stu)
 }
 
 
+std::ostream & student2::arr_out(std::ostream & os) const
+{
+	int size = ArrayDB::size();
+	if (size > 0)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			os << ArrayDB::operator[](i) << " ";
+			if (i % 5 == 4)
+				os << endl;
+		}
+	}
+	else
+		os << "Scores is emptry" << endl;
+	return os;
+}
+
+double student2::avearge()const
+{
+	return ArrayDB::sum() / ArrayDB::size();
+}
+double & student2::operator[](int i)
+{
+	return ArrayDB::operator[](i);
+}
+double student2::operator[](int i) const
+{
+	return ArrayDB::operator[](i);
+}
+const std::string & student2::Name() const 
+{
+	return (const string & )*this;
+}
+std::istream & operator>>(std::istream & is, student2 & stu)
+{
+	is >> (string &)stu;
+	return is;
+}
+std::istream & getline(std::istream & is, student2 & stu) 
+{
+	getline(is, (string &)stu);
+	return is;
+}
+std::ostream & operator<<(std::ostream & os, const student2 & stu) 
+{
+	os << (const string &)stu << endl;
+	stu.arr_out(os);
+	return os;
+}
 
 void codereuse_classmode_student2()
 {
+	student2 ada[publics] = { student2(quizees) ,student2(quizees) ,student2(quizees) };
+	int i = 0;
+	for (i = 0; i < publics; i++)
+	{
+		setstudent2(ada[i], quizees);
+	}
+	cout << endl << "The student list:" << endl;
+	for (i = 0; i < publics; i++)
+	{
+		cout << ada[i].Name() << " ";
+	}
+	cout << endl;
+	cout << endl;
 
+	for (i = 0; i < publics; i++)
+	{
+
+		cout << ada[i];
+		cout << "anearge:" << ada[i].avearge() << endl << endl;
+	}
+	cout << "bye bye" << endl;
 	return;
+}
+
+void setstudent2(student2 & sa, int n)
+{
+	cout << "Enter Student Name:" << endl;
+	getline(cin, sa);
+	cout << "Enter " << n << " sorce" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> sa[i];
+	}
+	while (cin.get() != '\n')
+	{
+		continue;
+	}
+	cout << endl;
+}
+
+
+void niukeprogram()
+{
+	
 }

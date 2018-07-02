@@ -38,7 +38,29 @@ public:
 void setstudent(student & sa, int n);
 
 void codereuse_classmode_student2();
+
+
 class student2 : private string, private valarray<double>
 {
-
+private:
+	typedef std::valarray<double> ArrayDB;
+	std::ostream & arr_out(std::ostream & os) const;
+public:
+	student2() :std::string("null student"), ArrayDB() {}
+	explicit student2(const string & str) : std::string(str), ArrayDB() {}
+	explicit student2(int n) : std::string("nullly"), ArrayDB(n) {}
+	student2(const string & str, int n) :std::string(str), ArrayDB(n) {}
+	student2(const string & str, const ArrayDB & a) : std::string(str), ArrayDB(a) { }
+	student2(const string & str, double * pd, int n) : std::string(str), ArrayDB(pd, n) {}
+	~student2(){}
+	double avearge()const;
+	double & operator[](int i);
+	double operator[](int i) const;
+	const std::string & Name() const;
+	friend std::istream & operator>>(std::istream & is, student2 & stu);
+	friend std::istream & getline(std::istream & is, student2 & stu);
+	friend std::ostream & operator<<(std::ostream & os, const student2 & stu);
 };
+
+void setstudent2(student2 & sa, int n);
+void niukeprogram();
