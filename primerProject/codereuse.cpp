@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "codereuse.h"
 
-
+string waiter::pv[] = { "asd","asd","asd","asd","asd","asd","asd" };
 void codereuse_classmode()
 {
 	niukeprogram();
-	//return;
+	return;
 	codereuse_classmode_student2();
 	return;
 	codereuse_classmode_student();
@@ -195,7 +195,8 @@ void codereuse_classmode_student2()
 	{
 
 		cout << ada[i];
-		cout << "anearge:" << ada[i].avearge() << endl << endl;
+		cout << "anearge1:" << ada[i].sum()/ada[i].size() << endl;
+		cout << "anearge2:" << ada[i].avearge() << endl << endl;
 	}
 	cout << "bye bye" << endl;
 	return;
@@ -220,5 +221,21 @@ void setstudent2(student2 & sa, int n)
 
 void niukeprogram()
 {
-	
+	tack<int> a;
+	int aa;
+	for (int i = 0;i <10;i++)
+	{
+		cin >> aa;
+		a.push(aa);
+	}
+	a.show();
+
+	tack<string> b;
+	string bb;
+	for (int i = 0; i < 10; i++)
+	{
+		cin >> bb;
+		b.push(bb);
+	}
+	b.show();
 }
