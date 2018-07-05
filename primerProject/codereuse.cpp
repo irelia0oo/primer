@@ -221,21 +221,16 @@ void setstudent2(student2 & sa, int n)
 
 void niukeprogram()
 {
-	tack<int> a;
-	int aa;
-	for (int i = 0;i <10;i++)
-	{
-		cin >> aa;
-		a.push(aa);
-	}
-	a.show();
-
 	tack<string> b;
 	string bb;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		cin >> bb;
 		b.push(bb);
 	}
 	b.show();
+	
+	tacksize<int, string> s = { 65536,b };
+	s.getaddress();
+	s.show();
 }

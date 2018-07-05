@@ -112,7 +112,7 @@ public:
 };
 
 
-template<class type>
+template<typename type>
 class tack
 {
 private:
@@ -121,12 +121,23 @@ private:
 	int top;
 public:
 	tack();
+	tack(const tack<type> & a);
 	bool isempty() { return top == 0; }
 	bool isfull() { return top == max; }
 	bool push(const type & i);
 	bool pop(type & i);
 	void show();
 };
+template<class type>
+tack<type>::tack(const tack<type> & a)
+{
+	top = a.top;
+	for (int i = 0;i <top;i++)
+	{
+		t[i] = a.t[i];
+	}
+}
+
 template<class type>
 tack<type>::tack()
 {
@@ -167,4 +178,22 @@ void tack<type>::show()
 		cout << t[i] << " ";
 	}
 	cout << endl;
+}
+
+
+template<typename type1,typename type2>
+class tacksize :public tack<type2>
+{
+private:
+	type1 address;
+public:
+	tacksize():tack<type2>::tack(){}
+	tacksize(const type1 & s,const tack<type2> & a ):tack<type2>::tack(a), address(s) {}
+	
+	void getaddress();
+};
+template<typename type1, typename type2>
+void tacksize<type1, type2>::getaddress()
+{
+	cout << this << endl;;
 }
