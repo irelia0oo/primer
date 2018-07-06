@@ -4,6 +4,8 @@
 string waiter::pv[] = { "asd","asd","asd","asd","asd","asd","asd" };
 void codereuse_classmode()
 {
+	classmenbermode();
+	return;
 	niukeprogram();
 	return;
 	codereuse_classmode_student2();
@@ -221,16 +223,26 @@ void setstudent2(student2 & sa, int n)
 
 void niukeprogram()
 {
-	tack<string> b;
-	string bb;
+	tack<int> b;
+	int bb;
 	for (int i = 0; i < 3; i++)
 	{
 		cin >> bb;
 		b.push(bb);
 	}
 	b.show();
-	
-	tacksize<int, string> s = { 65536,b };
-	s.getaddress();
-	s.show();
+	cout << b.Max() << endl;;
+
+	//	tacksize<int, string> s = { 65536,b };
+	//	s.getaddress();
+	//	s.show();
+}
+
+void classmenbermode()
+{
+	beta<double> guy(3.5 ,3);
+	cout << "T was set to double\n";
+	guy.show();
+	cout << guy.blab(10, 2.3) << endl;
+	cout << guy.blab(10.0, 2.3) << endl;
 }

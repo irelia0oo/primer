@@ -3,7 +3,7 @@
 #include <valarray>
 
 using namespace std;
-
+void classmenbermode();
 void codereuse_classmode();
 void codereuse_classmode_student();
 
@@ -127,7 +127,10 @@ public:
 	bool push(const type & i);
 	bool pop(type & i);
 	void show();
+	int Max();
 };
+
+
 template<class type>
 tack<type>::tack(const tack<type> & a)
 {
@@ -180,6 +183,18 @@ void tack<type>::show()
 	cout << endl;
 }
 
+template<typename type>
+int tack<type>::Max()
+{
+	int a = 0;
+	for (int i = 0; i < top; i++)
+	{
+		if (t[i] >= a)
+			a = t[i];
+	}
+	return a;
+}
+
 
 template<typename type1,typename type2>
 class tacksize :public tack<type2>
@@ -197,3 +212,26 @@ void tacksize<type1, type2>::getaddress()
 {
 	cout << this << endl;;
 }
+
+template<typename T>
+class beta
+{
+private:
+	template<typename v>
+	class hold
+	{
+	private:
+		v val;
+	public:
+		hold(v va = 0):val(va){}
+		void show() const { cout << val << endl; }
+		v value()const { return val; }
+	};
+	hold<T> q;
+	hold<int> n;
+public:
+	beta(T ta,int i):q(ta),n(i){}
+	template<typename U>
+	U blab(U u, T t) { return (n.value() + q.value())*u / t; }
+	void show()const { q.show(); n.show(); }
+};
