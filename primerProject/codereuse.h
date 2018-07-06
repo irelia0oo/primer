@@ -235,3 +235,16 @@ public:
 	U blab(U u, T t) { return (n.value() + q.value())*u / t; }
 	void show()const { q.show(); n.show(); }
 };
+
+template<template<typename T> class thing>
+class Crab
+{
+private:
+	thing<int> s1;
+	thing<double> s2;
+public:
+	Crab() {}
+	~Crab() {}
+	bool push(int a, double x) { return s1.push(a) && s2.push(x); }
+	bool pop(int & a, double & x) { return s1.pop(a) && s2.pop(x); }
+};

@@ -245,4 +245,18 @@ void classmenbermode()
 	guy.show();
 	cout << guy.blab(10, 2.3) << endl;
 	cout << guy.blab(10.0, 2.3) << endl;
+
+
+	Crab<tack> nebula;
+	int ni;
+	double nb;
+	while (cin >> ni >> nb && ni > 0 && nb > 0)
+	{
+		if(!nebula.push(ni,nb))
+			break;
+	}
+	while (nebula.pop(ni,nb))
+	{
+		cout << ni << " " << nb << endl;
+	}
 }
