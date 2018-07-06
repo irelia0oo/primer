@@ -6,6 +6,7 @@ using namespace std;
 void classmenbermode();
 void codereuse_classmode();
 void codereuse_classmode_student();
+void classmemberothername();
 
 const int publics = 3;
 const int quizees = 5;
@@ -128,6 +129,7 @@ public:
 	bool pop(type & i);
 	void show();
 	int Max();
+	friend void count(const tack & c);
 };
 
 
@@ -193,6 +195,21 @@ int tack<type>::Max()
 			a = t[i];
 	}
 	return a;
+}
+
+template<typename type>
+void count(const tack<type> & c)
+{
+	if (top <= 0)
+	{
+		cout << "the array is empty!" << endl;
+		return;
+	}
+	for (int i = 0; i < top; i++)
+	{
+		cout << t[i] << " ";
+	}
+	cout << endl;
 }
 
 

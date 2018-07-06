@@ -238,8 +238,11 @@ void niukeprogram()
 	//	s.show();
 }
 
+
 void classmenbermode()
 {
+	classmemberothername();
+	return;
 	beta<double> guy(3.5 ,3);
 	cout << "T was set to double\n";
 	guy.show();
@@ -259,4 +262,24 @@ void classmenbermode()
 	{
 		cout << ni << " " << nb << endl;
 	}
+}
+
+void classmemberothername()
+{
+	int xx[4] = { 0,0 };
+	cout << xx[0] << endl;
+	cout << xx[1] << endl;
+	cout << xx[2] << endl;
+	cout << xx[3] << endl;
+	return;
+	int a[4] = { 1, 2, 3, 4 };
+	int *ptr = (int *)(&a + 1);
+	cout << &a << endl;
+	cout << &a+1 << endl;
+	cout << ptr << endl;
+	printf("%d", *(ptr - 1));
+	char a1 = 12;
+	int a2 = 12.0;
+	int a3 = 12.0f;
+	int a4 = (int) 12.0;
 }
