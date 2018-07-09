@@ -266,12 +266,13 @@ void classmenbermode()
 
 void classmemberothername()
 {
+	return;
 	int xx[4] = { 0,0 };
 	cout << xx[0] << endl;
 	cout << xx[1] << endl;
 	cout << xx[2] << endl;
 	cout << xx[3] << endl;
-	return;
+	
 	int a[4] = { 1, 2, 3, 4 };
 	int *ptr = (int *)(&a + 1);
 	cout << &a << endl;
