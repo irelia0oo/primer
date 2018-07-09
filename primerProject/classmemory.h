@@ -87,7 +87,7 @@ private:
 	node * rear;
 	int peoples;
 	const int qsize;
-	queue(const queue & a):qsize(0){}//伪私有类 防止生成默认的复制构造函数 又不让调用 简单的说 进制类复制
+	queue(const queue & a):qsize(0){}//伪私有类 防止生成默认的复制构造函数 又不让调用 简单的说 禁止类复制
 	queue & operator=(const queue & a) { return *this; }//伪私有类 防止生成默认的复制构造函数 又不让调用 简单的说 进制类复制
 public:
 	queue(int qs = q_size) : qsize(qs){ front = rear = nullptr; peoples = 0; }//函数参数后面qsize(qs),表示把 qsize初始化为qs

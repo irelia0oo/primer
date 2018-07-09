@@ -2,7 +2,8 @@
 #include "stdafx.h"
 
 void friendclassfunction();
-
+void abnormal();
+double hmean(double x,double y);
 class Tv
 {
 private:
@@ -44,3 +45,22 @@ public:
 	void set_mode(Tv & t) { t.set_mode(); }
 	void set_input(Tv & t) { t.set_input(); }
 };
+
+
+class badhmean
+{
+private:
+	double val1;
+	double val2;
+public:
+	badhmean(double v1 = 0.0, double v2 = 0.0) :val1(v1), val2(v2) {}
+	void showbadmsg();
+};
+inline void badhmean::showbadmsg()
+{
+	if (val1 == -val2)
+	{
+		cout << "the arguments is wrong,a + b = 0" << endl
+			<< "Enter new number:" << endl;
+	}
+}

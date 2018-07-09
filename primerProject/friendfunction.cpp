@@ -3,6 +3,8 @@
 
 void friendclassfunction()
 {
+	abnormal();
+	return;
 	Tv s42;
 	s42.setthings();
 	cout << "------------------" << endl;
@@ -72,3 +74,31 @@ void Tv::setthings() const
 		cout << "input == " << (input == TV ? "TV" : "DVD") << endl;
 	}
 }
+
+void abnormal()
+{
+	double x, y, z = 0.0;
+	cout << "Enter you numbers£º" << endl;
+	while (cin>>x>>y)
+	{
+		try
+		{
+			z = hmean(x, y);
+		}
+		catch (badhmean & s)
+		{
+			s.showbadmsg();
+			continue;
+		}
+		cout << "the result ==" << z << endl;
+	}
+}
+
+
+ double hmean(double x, double y)
+{
+	 if (x + y == 0)
+		 throw badhmean(x,y);	 
+	 return 2 * y * x / (x + y);
+}
+
