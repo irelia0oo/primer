@@ -5,7 +5,7 @@ void friendclassfunction();
 void abnormal();
 double hmean(double x,double y);
 void studentpower();
-char *myString();
+
 
 inline long long getpowermax(long long a, long long b) { return a > b ? a : b; }
 inline long long getpowermin(long long a, long long b) { return a > b ? b : a; }
