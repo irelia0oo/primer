@@ -89,10 +89,10 @@ int f2(int x)
 
 void abnormal()
 {
-	Tv c1,c3;
-	Remote c2;
-	cout << (typeid(c2) == typeid(c1)) << endl;
-	cout << (typeid(c2) == typeid(c1)) << endl;
+	//Tv c1,c3;
+	//Remote c2;
+	//cout << (typeid(c2) == typeid(c1)) << endl;
+	//cout << (typeid(c2) == typeid(c1)) << endl;
 	return;
 	studentpower();
 	return;
