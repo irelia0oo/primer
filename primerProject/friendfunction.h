@@ -70,4 +70,3 @@ inline void badhmean::showbadmsg()
 			<< "Enter new number:" << endl;
 	}
 }
-

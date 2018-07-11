@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "friendfunction.h"
+#include <typeinfo.h>
 
 void friendclassfunction()
 {
@@ -88,6 +89,11 @@ int f2(int x)
 
 void abnormal()
 {
+	Tv c1,c3;
+	Remote c2;
+	cout << (typeid(c2) == typeid(c1)) << endl;
+	cout << (typeid(c2) == typeid(c1)) << endl;
+	return;
 	studentpower();
 	return;
 	
