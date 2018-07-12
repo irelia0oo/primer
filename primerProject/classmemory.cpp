@@ -16,7 +16,7 @@ stringbad::stringbad()
 
 stringbad::stringbad(const char * s)
 {
-	len = std::strlen(s);
+	len = static_cast<int>(std::strlen(s));
 	str = new char[len + 1];
 	//std::strcpy(str, s);
 	//std::strncpy(str, s, len);
