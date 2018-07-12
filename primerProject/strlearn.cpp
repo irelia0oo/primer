@@ -6,6 +6,7 @@ void strlearn()
 	strlearnA();
 	strlearnB();
 	learnautoptr();
+	vectorlear();
 }
 
 
@@ -95,6 +96,7 @@ int strlearnB()
 
 void learnautoptr()
 {
+	return;
 	std::auto_ptr<report> ps{ new report("using auto_ptr") };
 	ps->comment();
 	
@@ -146,4 +148,11 @@ int xitifabulacc()
 	if (n - klasttwo < k)
 		k = n - klasttwo;
 	return k;
+}
+void vectorlear()
+{
+	vector<int> rating(5);
+	int n;
+	cin >> n;
+	vector<double> scores(n);
 }

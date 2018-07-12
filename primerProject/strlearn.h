@@ -7,6 +7,7 @@ void strlearnA();
 int strlearnB();
 void learnautoptr();
 int xitifabulacc();
+void vectorlear();
 
 class report
 {
