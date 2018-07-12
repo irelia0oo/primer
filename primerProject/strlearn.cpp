@@ -4,12 +4,14 @@
 void strlearn()
 {
 	strlearnA();
-	
+	strlearnB();
+	learnautoptr();
 }
 
 
 void strlearnA()
 {
+	return;
 	string one("Lottey winner!");
 	cout << one << endl;
 	string two(20, '$');
@@ -60,4 +62,71 @@ void strlearnA()
 	}
 	cout << "byebye" << endl;
 	fin.close();
+}
+
+
+int strlearnB()
+{
+	return 0;
+	int  a[3][2] = { 0 }, (*ptr)[2], i, j;
+	for (i = 0; i < 2; i++)
+	{
+		ptr = a + i;
+		scanf_s("%d", ptr);
+		ptr++;
+	}
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 2; j++)
+			printf("%2d", a[i][j]);
+		printf("\n");
+	}
+	return 0;
+	string text;
+	getline(cin, text, '\n');
+	//cout << text.find("Irelia", 0);
+	//cout << text.find("I", 0);
+	cout << text.capacity() << endl;
+	text.reserve(text.capacity() * 2);
+	cout << text.capacity() << endl;
+
+	return 0;
+}
+
+void learnautoptr()
+{
+	std::auto_ptr<report> ps{ new report("using auto_ptr") };
+	ps->comment();
+	
+	std::shared_ptr<report> pr{ new report("using shared_ptr") };
+	pr->comment();
+
+	std::unique_ptr<report> pz{ new report("using unique_ptr") };
+	pz->comment();
+
+	//cout << xitifabulacc() << endl;
+	return;
+}
+
+int xitifabulacc()
+{
+	int n, klastone, klasttwo, know,k;
+	cin >> n;
+	klastone = 2;
+	klasttwo = 1;
+	know = 3;
+	k = 0;
+	if (n <= 3)
+		return 0;
+	do 
+	{
+		klasttwo = klastone;
+		klastone = know;
+		know = klastone + klasttwo;
+	} while (klastone < n);
+
+	k = klastone - n;
+	if (n - klasttwo < k)
+		k = n - klasttwo;
+	return k;
 }
