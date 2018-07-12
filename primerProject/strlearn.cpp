@@ -104,6 +104,23 @@ void learnautoptr()
 	std::unique_ptr<report> pz{ new report("using unique_ptr") };
 	pz->comment();
 
+	auto_ptr<int> f[5] =
+	{
+		auto_ptr<int>(new int(1)),
+		auto_ptr<int>(new int(2)),
+		auto_ptr<int>(new int(3)),
+		auto_ptr<int>(new int(4)),
+		auto_ptr<int>(new int(5))
+	};
+	shared_ptr<int> fm;
+
+	//fm = f[2];
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << *f[i] << endl;
+	}
+	//cout << *fm << endl;
 	//cout << xitifabulacc() << endl;
 	return;
 }
