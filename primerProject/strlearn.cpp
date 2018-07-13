@@ -149,10 +149,57 @@ int xitifabulacc()
 		k = n - klasttwo;
 	return k;
 }
+
+
+
+int getnumbers(int nowx, int nowy, int x, int y)
+{
+	int number = 0;
+	if (nowx == x)
+		number = 1;
+	else if (nowy == y)
+		number = 1;
+	else number = getnumbers(nowx++, nowy, x, y) + getnumbers(nowx, nowy++, x, y);
+
+	printf("nowx ==%d nowy==%d numbers==%d\n", nowx, nowy, number);
+	return number;
+}
+
+
 void vectorlear()
 {
-	vector<int> rating(5);
 	int n;
 	cin >> n;
-	vector<double> scores(n);
+	vector<int> scores(5);
+	scores[0] = 99;
+	for (int i = 0; i < n; i++)
+	{
+		cout << scores[i] << " ";
+	}
+	cout << endl;
+	
+	return;
+	FILE *fp;
+	int i, a[6] = { 1,2,3,4,5,6 }, k;
+	fopen_s(&fp,"data.dat", "w+b");
+	for (i = 0; i < 6; i++)
+	{
+		fseek(fp, 0L, 0);
+		fwrite(&a[ 5 - i], sizeof(int), 1, fp);
+	}
+	rewind(fp);
+	fread(&k, sizeof(int), 1, fp);
+	fclose(fp);
+	printf("%d", k);
+
+	
+	return;
+	int count = 0;
+	int x, y;
+	cin >> x >> y;
+	count = getnumbers(0, 0, x, y);
+	cout << count << endl;
+
+	return;
+
 }

@@ -249,7 +249,7 @@ private:
 public:
 	beta(T ta,int i):q(ta),n(i){}
 	template<typename U>
-	U blab(U u, T t) { return (n.value() + q.value())*u / t; }
+	U blab(U u, T t) { return static_cast<U>((n.value() + q.value())*u / t); }
 	void show()const { q.show(); n.show(); }
 };
 

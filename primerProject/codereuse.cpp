@@ -75,7 +75,7 @@ void setstudent(student & sa, int n)
 }
 ostream & student::arr_out(ostream & os) const
 {
-	int size = scores.size();
+	int size = static_cast<int>(scores.size());
 	if (size > 0)
 	{
 		for (int i = 0; i < size; i++)
@@ -129,7 +129,7 @@ ostream & operator<<(ostream & os, student &stu)
 
 std::ostream & student2::arr_out(std::ostream & os) const
 {
-	int size = ArrayDB::size();
+	int size = static_cast<int>(ArrayDB::size());
 	if (size > 0)
 	{
 		for (int i = 0; i < size; i++)
@@ -279,8 +279,5 @@ void classmemberothername()
 	cout << &a+1 << endl;
 	cout << ptr << endl;
 	printf("%d", *(ptr - 1));
-	char a1 = 12;
-	int a2 = 12.0;
-	int a3 = 12.0f;
-	int a4 = (int) 12.0;
+
 }

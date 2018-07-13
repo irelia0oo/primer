@@ -8,6 +8,7 @@ int strlearnB();
 void learnautoptr();
 int xitifabulacc();
 void vectorlear();
+int getnumbers(int nowx, int nowy, int x, int y);
 
 class report
 {

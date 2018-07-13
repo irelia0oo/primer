@@ -65,7 +65,7 @@ stringbad & stringbad::operator=(const stringbad & s)
 stringbad & stringbad::operator=(const char * ch)
 {
 	delete[] str;
-	this->len = std::strlen(ch);
+	this->len = static_cast<int>(std::strlen(ch));
 	this->str = new char[this->len + 1];
 	strcpy_s(this->str, this->len + 1, ch);
 	//stringbad::num_strings++;
@@ -165,7 +165,7 @@ void xiti12()
 		}
 		cout << "shorttest ==" << shorttest << endl;
 		cout << "first ==" << first << endl;
-		srand(time(NULL));
+		srand(static_cast<unsigned int>(time(NULL)));
 		int choice = rand() % total;
 		stringbad * favorite = new stringbad(sayings[choice]);
 		cout << "sayings[choice]===" << sayings[choice] << "  choice ==" << choice << "  favorite ==" << favorite << "  *favorite ==" << *favorite << endl;
@@ -309,7 +309,7 @@ bool newcustomer(int x)
 void class_fifo()
 {
 	using namespace std;
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	cout << "put the line maxnumber:" << endl;
 	int qs;
 	cin >> qs;
@@ -334,7 +334,7 @@ void class_fifo()
 
 	for (int cycle = 0; cycle < cyclelimit; cycle++)
 	{
-		if (newcustomer(min_per_cust))
+		if (newcustomer(static_cast<int>(min_per_cust)))
 		{
 			if (line.isfull())
 				turnaways++;

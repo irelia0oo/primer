@@ -223,14 +223,14 @@ void classis_a_brass()
 
 baseDMA::baseDMA(const char * c , int r)
 {
-	int len = strlen(c) + 1;
+	int len = static_cast<int>(strlen(c)) + 1;
 	lable = new char[len];
 	strcpy_s(lable, len, c);
 	rating = r;
 }
 baseDMA::baseDMA(const baseDMA & r)
 {
-	int len = strlen(r.lable) + 1;
+	int len = static_cast<int>(strlen(r.lable)) + 1;
 	lable = new char[len];
 	strcpy_s(lable, len, r.lable);
 	rating = r.rating;
@@ -246,7 +246,7 @@ baseDMA & baseDMA::operator=(const baseDMA & r)
 
 	delete[] lable;
 
-	int len = strlen(r.lable) + 1;
+	int len = static_cast<int>(strlen(r.lable)) + 1;
 	lable = new char[len];
 	strcpy_s(lable, len, r.lable);
 	rating = r.rating;
@@ -283,20 +283,20 @@ std::ostream & operator<<(std::ostream & os, const lacksDMA & lr)
 hasDMA::hasDMA(const char *s, const char *l, int r ) 
 	: baseDMA(l,r)
 {
-	int len = strlen(s) + 1;
+	int len = static_cast<int>(strlen(s)) + 1;
 	style = new char[len];
 	strcpy_s(style, len, s);
 }
 hasDMA::hasDMA(const char *s, const baseDMA & r)
 	:baseDMA(r)
 {
-	int len = strlen(s) + 1;
+	int len = static_cast<int>(strlen(s)) + 1;
 	style = new char[len];
 	strcpy_s(style, len, s);
 }
 hasDMA::hasDMA(const hasDMA & h)
 {
-	int len = strlen(h.style) + 1;
+	int len = static_cast<int>(strlen(h.style)) + 1;
 	style = new char[len];
 	strcpy_s(style, len, h.style);
 }
@@ -310,7 +310,7 @@ hasDMA & hasDMA::operator=(const hasDMA & r)
 		return *this;
 	baseDMA::operator=(r);//或者可以这样写 *this = r;
 	delete[] style;
-	int len = strlen(r.style) + 1;
+	int len = static_cast<int>(strlen(r.style)) + 1;
 	style = new char[len];
 	strcpy_s(style, len, r.style);
 	return *this;

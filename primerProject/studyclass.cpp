@@ -123,9 +123,9 @@ void testclasszhan()
 
 
 
-Stonewt::Stonewt()
+Stonewt::Stonewt():stone(0)
 {
-	stone = pounds = pds_left = 0;
+	pounds = pds_left = 0.0;
 }
 Stonewt::Stonewt(double lbs)
 {
