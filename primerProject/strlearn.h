@@ -9,6 +9,8 @@ void learnautoptr();
 int xitifabulacc();
 void vectorlear();
 int getnumbers(int nowx, int nowy, int x, int y);
+void showvector(int pr);
+bool comparesize(const int a, const int b);
 
 class report
 {

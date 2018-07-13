@@ -164,17 +164,76 @@ int getnumbers(int nowx, int nowy, int x, int y)
 	printf("nowx ==%d nowy==%d numbers==%d\n", nowx, nowy, number);
 	return number;
 }
-
-
+void showvector(int pr)
+{
+	std::cout << pr << endl;
+}
+bool comparesize(const int a, const int b)
+{
+	if (a < b)
+		return false;
+	else
+		return true;
+}
 void vectorlear()
 {
+	vector<int> vc(10);
+	for (int i = 0; i < 10; i++)
+	{
+		vc[i] = i;
+	}
+	//for each(vc.begin(),vc.end(), showvector);
+	for (int pr : vc) showvector(pr);//c++11的新特性 基于范围的for循环
+
+	random_shuffle(vc.begin(), vc.end());//随机排序
+	for (int i = 0; i < vc.size(); i++)
+	{
+		cout << vc[i] << " ";
+	}
+	cout << endl << endl;
+
+	sort(vc.begin(), vc.end());//从小到大 升序排序
+	for (int i = 0; i < vc.size(); i++)
+	{
+		cout << vc[i] << " ";
+	}
+	cout << endl << endl;
+
+	sort(vc.begin(), vc.end(), comparesize);//从大到小，反向排序
+	for (int i = 0; i < vc.size(); i++)
+	{
+		cout << vc[i] << " ";
+	}
+	cout << endl << endl;
+	return;
 	int n;
 	cin >> n;
-	vector<int> scores(5);
+	vector<int> scores(n);
 	scores[0] = 99;
 	for (int i = 0; i < n; i++)
 	{
 		cout << scores[i] << " ";
+	}
+	cout << endl;
+	auto pd = scores.end() - 1;
+	cout << scores.size() << "  " << *pd << endl;
+
+	scores.push_back(n*n);
+	cout << scores.size() << "  " << (*(scores.end() - 1)) << endl;
+
+	scores.erase(scores.begin(), scores.begin() + 3);
+	for (int i = 0; i < scores.size(); i++)
+	{
+		cout << scores[i] << " ";
+	}
+	cout << endl << endl;
+	vector<int> ss2(2);
+	ss2[0] = 527966;
+	ss2[1] = 527966;
+	ss2.insert(ss2.begin() + 1, scores.begin(), scores.end());
+	for (int i = 0; i < ss2.size(); i++)
+	{
+		cout << ss2[i] << " ";
 	}
 	cout << endl;
 	
