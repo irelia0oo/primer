@@ -7,6 +7,7 @@ void strlearn()
 	strlearnB();
 	learnautoptr();
 	vectorlear();
+	learingstl();
 }
 
 
@@ -177,6 +178,14 @@ bool comparesize(const int a, const int b)
 }
 void vectorlear()
 {
+	return;
+	int x = 0, y = 5, z = 3;
+	while (z-- > 0 && ++x < 5)
+	{
+		y = y - 1;
+	}
+	printf("%d  %d  %d", x, y, z);
+	return;
 	vector<int> vc(10);
 	for (int i = 0; i < 10; i++)
 	{
@@ -254,11 +263,34 @@ void vectorlear()
 	
 	return;
 	int count = 0;
-	int x, y;
-	cin >> x >> y;
-	count = getnumbers(0, 0, x, y);
+	int x1, y1;
+	cin >> x1 >> y1;
+	count = getnumbers(0, 0, x1, y1);
 	cout << count << endl;
 
 	return;
 
+}
+
+void learingstl()
+{
+	vector<int> vc(10);
+	for (int i = 0; i < 10; i++)
+	{
+		vc[i] = i;
+	}
+	
+	vector<int>::iterator pr;
+	for (pr = vc.begin(); pr != vc.end(); pr++)
+	{
+		cout << *pr << " ";
+	}
+	cout << endl;
+	for (auto pl = vc.begin(); pl != vc.end(); pl++)
+	{
+		cout << *pl << " ";
+	}
+	cout << endl;
+	for (auto x : vc) cout << x << " ";
+	cout << endl;
 }
