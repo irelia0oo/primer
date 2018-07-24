@@ -12,6 +12,8 @@ int getnumbers(int nowx, int nowy, int x, int y);
 void showvector(int pr);
 bool comparesize(const int a, const int b);
 void learingstl();
+void learniter();
+void liaoli();
 
 class report
 {
@@ -25,3 +27,5 @@ public:
 	~report() { std::cout << "Object DeleteD!" << endl; }
 	void comment()const { std::cout << str << endl; }
 };
+
+inline void output(const std::string & s) { cout << s << " "; }

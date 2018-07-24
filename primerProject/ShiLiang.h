@@ -52,7 +52,6 @@ namespace VECTOR
 	};
 }
 
-
 class type_conversion
 {
 private:

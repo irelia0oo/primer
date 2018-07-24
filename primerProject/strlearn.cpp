@@ -8,6 +8,8 @@ void strlearn()
 	learnautoptr();
 	vectorlear();
 	learingstl();
+	learniter();
+	liaoli();
 }
 
 
@@ -171,7 +173,8 @@ void showvector(int pr)
 }
 bool comparesize(const int a, const int b)
 {
-	if (a < b)
+	//printf("²âÊÔ»·¾³===%d,%d\n",a, b);
+	if (a <= b)
 		return false;
 	else
 		return true;
@@ -274,6 +277,42 @@ void vectorlear()
 
 void learingstl()
 {
+	return;
+	ostream_iterator<int, char> out_iter(cout, " ");
+	//int aler[10] = { 1,2,3,4,5,6,10,8,9,0 };
+	int aler[10] = { 2,2,5,4,4,4,5,2,2,2};
+	vector<int> dice(10);
+	copy(aler, aler + 10, dice.begin());
+
+	copy(dice.begin(), dice.end(), out_iter);
+	cout << endl;
+	sort(dice.begin(), dice.end());
+	copy(dice.rbegin(), dice.rend(), out_iter);
+	cout << endl;
+
+	sort(dice.begin(), dice.end(),comparesize);
+
+	for (auto pr = dice.rbegin(); pr != dice.rend(); pr++)
+	{
+		cout << *pr << " ";
+	}
+	cout << endl;
+	return;
+	const int intcc = 5;
+	int intss[intcc];
+	for (int i = 0; i < intcc; i++)
+	{
+		cin >> intss[i];
+	}
+	//for (auto x : intss)cin >> x;
+	for (auto x : intss)cout << x << " ";
+	cout << endl;
+	sort(intss,intss+intcc, comparesize);
+	for (auto x : intss)cout << x << " ";
+	cout << endl;
+	
+	copy(intss, intss + 5, out_iter);
+	return;
 	vector<int> vc(10);
 	for (int i = 0; i < 10; i++)
 	{
@@ -293,4 +332,55 @@ void learingstl()
 	cout << endl;
 	for (auto x : vc) cout << x << " ";
 	cout << endl;
+}
+
+void learniter()
+{
+	return;
+	string str1[4] = { "fine","fish","fashion","fate" };
+	string str2[2] = { "busy","bats" };
+	string str3[2] = { "silly","singers" };
+	vector<string> words(4);
+	copy(str1, str1 + 4, words.begin());
+	for_each(words.begin(), words.end(), output);
+	cout << endl;
+	copy(str2, str2 + 2, back_insert_iterator<vector<string>>(words));
+	for (auto x : words)cout << x << " ";
+	cout << endl;
+	copy(str3, str3 + 2, insert_iterator<vector<string>>(words,words.begin()));
+	for (auto x : words)output(x);
+	cout << endl;
+
+	sort(words.begin(), words.end());
+	vector<string>::iterator ppc;
+	for (ppc =words.begin();ppc!=words.end();ppc++)
+	{
+		output(*ppc);
+	}
+	cout << endl;
+}
+
+
+void liaoli()
+{
+	return;
+	vector<string> mas;
+	string tmp;
+	cin >> tmp;
+	while (cin.fail() == false)
+	{
+		mas.push_back(tmp);
+		cin >> tmp;
+	}
+	sort(mas.begin(), mas.end());
+	//for_each(mas.begin(), mas.end(), output);
+	for (auto pr = mas.begin(); pr != mas.end() - 1; pr++)
+	{
+		if (*pr == *(pr + 1))
+		{
+			pr = mas.erase(pr );
+			//pr--;
+		}
+	}
+	cout << mas.size() << endl;
 }
