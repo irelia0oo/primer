@@ -151,6 +151,7 @@
     <ClInclude Include="codereuse.h" />
     <ClInclude Include="derivedclass.h" />
     <ClInclude Include="friendfunction.h" />
+    <ClInclude Include="rongqi.h" />
     <ClInclude Include="ShiLiang.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="strlearn.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="derivedclass.cpp" />
     <ClCompile Include="friendfunction.cpp" />
     <ClCompile Include="primerProject.cpp" />
+    <ClCompile Include="rongqi.cpp" />
     <ClCompile Include="ShiLiang.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

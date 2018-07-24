@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "strlearn.h"
+#include "rongqi.h"
 
 void strlearn()
 {
@@ -10,6 +11,7 @@ void strlearn()
 	learingstl();
 	learniter();
 	liaoli();
+	rongqi();
 }
 
 
