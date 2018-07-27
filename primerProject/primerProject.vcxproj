@@ -151,6 +151,7 @@
     <ClInclude Include="codereuse.h" />
     <ClInclude Include="derivedclass.h" />
     <ClInclude Include="friendfunction.h" />
+    <ClInclude Include="isofile.h" />
     <ClInclude Include="rongqi.h" />
     <ClInclude Include="ShiLiang.h" />
     <ClInclude Include="stdafx.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="codereuse.cpp" />
     <ClCompile Include="derivedclass.cpp" />
     <ClCompile Include="friendfunction.cpp" />
+    <ClCompile Include="isofile.cpp" />
     <ClCompile Include="primerProject.cpp" />
     <ClCompile Include="rongqi.cpp" />
     <ClCompile Include="ShiLiang.cpp" />

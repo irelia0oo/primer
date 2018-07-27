@@ -42,6 +42,9 @@
     <ClInclude Include="rongqi.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="isofile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -72,6 +75,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="rongqi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="isofile.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -289,6 +289,7 @@ void useinitializerlist()
 
 void xiti16()
 {
+	return;
 	const long long nn = 1000000;
 	vector<int> vi0;
 	srand(static_cast<unsigned int>(time(NULL)));
