@@ -36,6 +36,7 @@ double getinitializersum(std::initializer_list<double> il);
 double getinitializerage(std::initializer_list<double> il);
 void xiti16();
 
+
 inline void show(double v)
 {
 	std::cout.width(6);
@@ -61,4 +62,11 @@ inline double getinitializerage(std::initializer_list<double> il)
 		return getinitializersum(il) / il.size();
 	else
 		return 0.0;
+}
+
+template<typename T>
+int reduce(T ar[], int n)
+{
+	set<T> p(ar, ar + n);
+	return static_cast<int>(n - p.size());
 }

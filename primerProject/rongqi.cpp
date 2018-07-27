@@ -286,12 +286,70 @@ void useinitializerlist()
 	cout << getinitializerage(d1) << endl;
 }
 
+
 void xiti16()
 {
+	const long long nn = 1000000;
+	vector<int> vi0;
+	srand(static_cast<unsigned int>(time(NULL)));
+
+	clock_t start = clock();
+	int ran = 0;
+	for (int i = 0; i < nn; ++i)
+	{
+		ran = rand();
+		//cout << i << ' ' << ran << endl;
+		vi0.push_back(ran);
+	}
+	clock_t end = clock();
+	cout << end << "-" << start << "=" << end - start << endl;
+	cout << static_cast<double>((end - start) / CLOCKS_PER_SEC) << endl;
+
+	vector<int> vi1(nn);
+	list<int> li(nn);
+	copy(vi0.begin(), vi0.end(), li.begin());
+	
+	start = clock();
+	//sort(li.begin(), li.end());
+	li.sort();
+	end = clock();
+	cout << end << "-" << start << "=" << end - start << endl;
+	cout << static_cast<double>((end - start) / CLOCKS_PER_SEC) << endl;
+
+	li.clear();
+	copy(vi0.begin(), vi0.end(), insert_iterator<list<int>>(li,li.begin()));
+	//for (auto x : li) cout << x << ' ';
+	start = clock();
+	copy(li.begin(), li.end(), vi1.begin());
+	sort(vi1.begin(), vi1.end());
+	copy(vi1.begin(), vi1.end(), li.begin());
+	end = clock();
+	cout << end << "-" << start << "=" << end - start << endl;
+	cout << static_cast<double>((end - start) / CLOCKS_PER_SEC) << endl;
+	return;
+	long ar[] = { 5,5,6,7,7,8,3,2,1,3,3 };
+	cout << reduce(ar, static_cast<int>(size(ar))) << endl;
+
+	string sr[] = { "aa","bb","cc","dd","dd","cc","bb","aa","ee" };
+	cout << reduce(sr, static_cast<int>(size(sr))) << endl;
+
+	char cr[] = { 'a','b','c','d','d','c','b','a' };
+	cout << reduce(cr, static_cast<int>(size(cr))) << endl;
 	return;
 	string hw,wh;
-	while (cin >> hw && hw != "exit")
+	while (getline(cin,hw)  && hw != "exit" && hw != "")
 	{
+		cout << "===" << hw<<endl;
+		for (auto pi = hw.begin(); pi != hw.end(); pi++)
+		{
+			if (!isalnum(*pi) && !isalpha(*pi))
+			{
+				hw.erase(pi);
+				pi--;
+			}
+		}
+		transform(hw.begin(), hw.end(), hw.begin(), tolower);
+
 		if (wh.size())
 			wh.clear();
 		copy(hw.rbegin(), hw.rend(), insert_iterator<string>(wh, wh.begin()));
@@ -303,3 +361,5 @@ void xiti16()
 			cout << "false" << endl;
 	}
 }
+
+
