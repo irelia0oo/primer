@@ -90,32 +90,166 @@ void fileliearn()
 	HaoWeiLai();
 	ShuChuan();
 	reschflush();
+	erjinzhiinandout();
+	suijiduquwenjian();
 }
 
 void reschflush()
 {
-	//cout << "aaaaaa";
-	double n;
-	cin >> n ;
-	flush(cout);//刷新缓冲区
-	hex(cout);//16进制输出
-	cout << n << endl;
-	oct(cout);//8进制输出
-	cout << n << endl;
-	cout << dec;//十进制输出
-	cout << n << endl;
-	cout.width(20);//设置输出宽度
-	cout << n << endl;
-	cout.fill('*');//填充字符
-	cout.width(20);
-	cout << n << endl;
-	cout.width(20);
-	cout.precision(2);//设置精度为10位
-	cout << n << endl;
-	cout.setf(ios_base::showpoint);//显示末尾的小数点
-	cout.precision(10);
-	cout << n << endl;
-	cout.setf(ios_base::showbase);//输出使用C++6.0的前缀 0 0x
-	cout.setf(ios_base::showpos);//整数前加上 +
-	cout << n << endl;
+	return;
+	string filename;
+	cin >> filename;
+	ofstream fout(filename.c_str(), ios_base::out | ios_base::app);
+
+	string sercrt;
+	cin >> sercrt;
+	fout << sercrt << endl;
+	fout.close();
+	fout.clear();
+
+	ifstream fin(filename.c_str());
+	fout.open("222.txt", ios_base::out | ios_base::app);
+	if (!fin.is_open())
+		exit(EXIT_FAILURE);
+	char ch;
+	while (fin.get(ch))
+	{
+		fout << ch;
+	}
+	fin.close();
+}
+
+void erjinzhiinandout()
+{
+	return;
+	planet p1;
+	cout << fixed << right;
+	ifstream fin;
+	fin.open(File, ios_base::in | ios_base::binary);
+	if (fin.is_open())
+	{
+		while (fin.read((char *) &p1,sizeof p1))
+		{
+			cout << setw(20) << p1.name
+				<< setprecision(0) << setw(12) << p1.population
+				<< setprecision(2) << setw(6) << p1.g << endl;
+		}
+		fin.close();
+	}
+	ofstream fout(File, ios_base::out | ios_base::app | ios_base::binary);
+	if (!fout.is_open())
+	{
+		cerr << "can not open the " << File << " for output" << endl;
+		exit(EXIT_FAILURE);
+	}
+	cin.get(p1.name, 20);
+	while (p1.name[0] != '\0')
+	{
+		eatline();
+		cin >> p1.population;
+		cin >> p1.g;
+		eatline();
+		fout.write((char *)&p1, sizeof p1);
+		cin.get(p1.name, 20);
+	}
+	fout.close();
+
+	fin.clear();
+	fin.open(File, ios_base::in | ios_base::binary);
+	if (fin.is_open())
+	{
+		while (fin.read((char *)&p1, sizeof p1))
+		{
+			cout << setw(20) << p1.name
+				<< setprecision(0) << setw(12) << p1.population
+				<< setprecision(2) << setw(6) << p1.g << endl;
+		}
+		fin.close();
+	}
+	cout << "======================" << endl;
+}
+
+void suijiduquwenjian()
+{
+	planet p1;
+	cout << fixed;
+	fstream finout;
+	finout.open(File, ios_base::in | ios_base::out | ios_base::binary);
+	int ct = 0;
+	if (finout.is_open())
+	{
+		finout.seekg(0);
+		while (finout.read((char *) & p1,sizeof p1))
+		{
+			cout << ct++ << setw(LIM) << p1.name << ":"
+				<< setprecision(0) << setw(12) << p1.population
+				<< setprecision(2) << setw(6) << p1.g << endl;
+		}
+		if (finout.eof())
+			finout.clear();
+		else
+		{
+			cerr << "error reading file :" << File << endl;
+			exit(EXIT_FAILURE);
+		}
+	}
+	else 
+	{
+		cerr << File << " can not be open!" << endl;
+		exit(EXIT_FAILURE);
+	}
+
+	long rec;
+	cin >> rec;
+	eatline();
+	if (rec < 0 || rec >= ct)
+	{
+		cerr << "bye bye!" << endl;
+		exit(EXIT_FAILURE);
+	}
+	streampos place = rec * sizeof p1;
+	finout.seekg(place);
+	if (finout.fail())
+	{
+		cerr << "seek a age";
+		exit(EXIT_FAILURE);
+	}
+
+	finout.read((char *)& p1, sizeof p1);
+	cout << rec << setw(LIM) << p1.name << ":"
+		<< setprecision(0) << setw(12) << p1.population
+		<< setprecision(2) << setw(6) << p1.g << endl;
+	if (finout.eof())
+		finout.clear();
+
+
+	cin.get(p1.name, LIM);
+	eatline();
+	cin >> p1.population;
+	cin >> p1.g;
+	finout.seekp(place);
+	finout.write((char *)& p1, sizeof p1) << flush;
+	if (finout.fail())
+	{
+		cerr << "write a age";
+		exit(EXIT_FAILURE);
+	}
+
+
+
+	ct = 0;
+	finout.seekg(0);
+	while (finout.read((char *)& p1, sizeof p1))
+	{
+		cout << ct++ << setw(LIM) << p1.name << ":"
+			<< setprecision(0) << setw(12) << p1.population
+			<< setprecision(2) << setw(6) << p1.g << endl;
+	}
+	if (finout.eof())
+		finout.clear();
+	else
+	{
+		cerr << "error reading file :" << File << endl;
+		exit(EXIT_FAILURE);
+	}
 }
