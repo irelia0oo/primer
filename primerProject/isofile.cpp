@@ -92,6 +92,7 @@ void fileliearn()
 	reschflush();
 	erjinzhiinandout();
 	suijiduquwenjian();
+	sstreamlearn();
 }
 
 void reschflush()
@@ -171,6 +172,7 @@ void erjinzhiinandout()
 
 void suijiduquwenjian()
 {
+	return;
 	planet p1;
 	cout << fixed;
 	fstream finout;
@@ -221,8 +223,6 @@ void suijiduquwenjian()
 		<< setprecision(2) << setw(6) << p1.g << endl;
 	if (finout.eof())
 		finout.clear();
-
-
 	cin.get(p1.name, LIM);
 	eatline();
 	cin >> p1.population;
@@ -252,4 +252,15 @@ void suijiduquwenjian()
 		cerr << "error reading file :" << File << endl;
 		exit(EXIT_FAILURE);
 	}
+}
+void sstreamlearn()
+{
+	string a = "ia asa fewr dcfs fdgfg rers ssd"
+		"the wgfuus  sads aaa wdwd ";
+	//getline(cin, a);
+	istringstream in_str(a);
+	string word;
+	while (in_str >> word)
+		cout << word << endl;
+	
 }

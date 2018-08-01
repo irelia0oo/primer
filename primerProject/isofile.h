@@ -21,6 +21,7 @@ void reschflush();
 void eatline();
 void erjinzhiinandout();
 void suijiduquwenjian();
+void sstreamlearn();
 
 inline void eatline()
 {
