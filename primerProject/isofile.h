@@ -7,9 +7,8 @@
 #include <numeric>//STL算法 通用数字算法
 #include <iterator>
 #include <iomanip>
-
 #include <fstream>
-
+#include <functional>
 
 void fileliearn();
 int rev(int);
@@ -22,6 +21,12 @@ void eatline();
 void erjinzhiinandout();
 void suijiduquwenjian();
 void sstreamlearn();
+void homewalk();
+void newcharacter();
+void baozhuangqifuntion();
+double dub(double x);
+double squre(double);
+void variadictemplate();
 
 inline void eatline()
 {
@@ -36,3 +41,40 @@ struct planet
 };
 static const char * File = "planets.dat";
 static const int LIM = 20;
+
+class  FB
+{
+private:
+	double z;
+public:
+	FB(double zz = 1.0) :z(zz) {}
+	double operator()(double p) { return z * p; }
+};
+
+class FP
+{
+private:
+	double z;
+public:
+	FP(double zz = 1.0) :z(zz) {}
+	double operator()(double b) { return z * b; }
+};
+inline double dub(double x) { return x * 2.0; }
+inline double squre(double x) { return x * x; }
+
+
+template<typename T,typename F>
+T use_f(T v, F f)
+{
+	static int couts = 0;
+	couts++;
+	cout << "use_f " << couts << " " << &couts << endl;
+	return  f(v);
+}
+
+
+template<typename... any> //元运算符
+void show_list(any... value)
+{
+	//展开参数包
+}

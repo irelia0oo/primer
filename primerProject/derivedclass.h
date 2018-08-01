@@ -53,6 +53,7 @@ protected:
 public:
 	Brass(const std::string & s = "nullbody", long an = -1, double bal = 0.0);
 	void Deposit(double amt);
+	void Deposit(int amt) = delete;//默认禁止
 	virtual void Withdraw(double amt);
 	double Balance() const;
 	virtual void ViewAcct() const;
@@ -76,7 +77,9 @@ public:
 	void ResetRate(double r) { rate = r; }
 	void ResetOwes() { owesBank = 0; }
 	virtual ~BrassPlus(){ 
-		//cout << "派生类函数析构函数" << endl;
+	//cout << "派生类函数析构函数" << endl;
+	// override 虚说明符 表要要覆盖基本的这个函数，不管函数参数是不是相符
+	// final 虚说明符 不允许派生类重新定义这个函数
 	}
 };
 

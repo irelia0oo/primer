@@ -19,6 +19,7 @@ public:
 	stringbad();
 	stringbad(const char * s);
 	stringbad(const stringbad & s);
+	stringbad(stringbad && s) = default;//移动构造函数
 	~stringbad();
 	friend std::ostream & operator<<(std::ostream & os, const stringbad & st);
 	friend std::istream & operator>>(std::istream & is, stringbad & st);
@@ -30,6 +31,7 @@ public:
 	int length()const { return len; }
 	stringbad & operator=(const stringbad & s);
 	stringbad & operator=(const char *);
+	stringbad & operator=(stringbad && s) = default;//移动复制函数
 	static int howmanay();
 	//void callme();
 };

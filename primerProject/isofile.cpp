@@ -93,6 +93,8 @@ void fileliearn()
 	erjinzhiinandout();
 	suijiduquwenjian();
 	sstreamlearn();
+	homewalk();
+	newcharacter();
 }
 
 void reschflush()
@@ -204,12 +206,14 @@ void suijiduquwenjian()
 	long rec;
 	cin >> rec;
 	eatline();
-	if (rec < 0 || rec >= ct)
+	if (rec < 0 )
 	{
 		cerr << "bye bye!" << endl;
 		exit(EXIT_FAILURE);
 	}
-	streampos place = rec * sizeof p1;
+	if (rec > ct)
+		rec = ct + 1;
+	streampos place = rec * sizeof p1;//计算每个结构占据多少字节位置
 	finout.seekg(place);
 	if (finout.fail())
 	{
@@ -255,6 +259,7 @@ void suijiduquwenjian()
 }
 void sstreamlearn()
 {
+	return;
 	string a = "ia asa fewr dcfs fdgfg rers ssd"
 		"the wgfuus  sads aaa wdwd ";
 	//getline(cin, a);
@@ -262,5 +267,77 @@ void sstreamlearn()
 	string word;
 	while (in_str >> word)
 		cout << word << endl;
-	
+}
+void homewalk()
+{
+	return;
+	ofstream fout("mat.dat", ios_base::out | ios_base::app | ios_base::binary);
+	string q;
+	getline(cin, q);
+	while (q[0] != '\0')
+	{
+		fout.seekp(ios_base::end);
+		fout.write((char *)&q, sizeof q);
+		getline(cin, q);
+	}
+	fout.close();
+
+	ifstream fin;
+	fin.open("mat.dat",ios_base::in|ios_base::binary);
+	string p;
+	set<string> sets;
+	while (fin.read((char *)&p, sizeof p))
+	{
+		sets.insert(p);
+	}
+	for (auto x : sets)cout << x << endl;
+}
+
+
+void newcharacter()
+{
+	variadictemplate();
+	return;
+	baozhuangqifuntion();
+	return;
+	vector<int> a(1000);
+	srand(static_cast<unsigned int>(time(NULL)));
+	std::generate(a.begin(), a.end(), std::rand);
+	auto mmo = [](int x) {return x % 3 == 0; };//Lambda
+	__int64 counts = count_if(a.begin(), a.end(), mmo);
+	cout << counts << endl;
+}
+void baozhuangqifuntion()
+{
+	double y = 1.21;
+	cout << "   " << use_f(y, dub) << endl;
+	cout << "   " << use_f(y, squre) << endl;
+	cout << "   " << use_f(y, FP(5.0)) << endl;
+	cout << "   " << use_f(y, FB(5.0)) << endl;
+	cout << "   " << use_f(y, [](double u) {return u * u; }) << endl;
+	cout << "   " << use_f(y, [](double u) {return u * u / 2.0; }) << endl;
+
+
+	echo("use function the result is：\n");
+	function<double(double)> ef1 = dub;
+	function<double(double)> ef2 = squre;
+	function<double(double)> ef3 = FP(10.0);
+	function<double(double)> ef4 = FB(10.0);
+	function<double(double)> ef5 = [](double u) {return u * u; };
+	function<double(double)> ef6 = [](double u) {return u * u / 2.0; };
+	cout << "   " << use_f(y, ef1) << endl;
+	cout << "   " << use_f(y, ef2) << endl;
+	cout << "   " << use_f(y, ef3) << endl;
+	cout << "   " << use_f(y, ef4) << endl;
+	cout << "   " << use_f(y, ef5) << endl;
+	cout << "   " << use_f(y, ef6) << endl;
+}
+
+void variadictemplate()
+{
+	int n = 14;
+	double x = 2.71828;
+	string mr = "Mr.String objects!";
+	show_list(n, x);
+	show_list(x*x, '!', 7, mr);
 }

@@ -142,6 +142,7 @@ void rongqimulmap()
 	cout << endl;
 }
 
+
 void funadap()
 {
 	return;

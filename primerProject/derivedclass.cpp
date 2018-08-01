@@ -208,11 +208,11 @@ void classis_a_brass()
 	Hoggy.ViewAcct();
 	cout << endl;
 	
-	Hoggy.Deposit(1000);
+	Hoggy.Deposit(1000.0);
 	cout << "now balance:" << Hoggy.Balance() << endl;
-	Pigggy.Withdraw(4200);
+	Pigggy.Withdraw(4200.0);
 	cout << "pigg account balance==" << Pigggy.Balance() << endl;
-	Hoggy.Withdraw(4200);
+	Hoggy.Withdraw(4200.0);
 	cout << "Hoggy account balance==" << Hoggy.Balance() << endl;
 
 	cout << endl;
