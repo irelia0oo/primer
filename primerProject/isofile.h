@@ -72,9 +72,17 @@ T use_f(T v, F f)
 	return  f(v);
 }
 
+template<typename any>
+void show_list(const any & value)
+{
+	cout << value << endl;
+}
 
-template<typename... any> //元运算符
-void show_list(any... value)
+template<typename any, typename... Args> 
+void show_list(const any& value, const Args&... args)
 {
 	//展开参数包
+	cout << value << ' ';
+	if (sizeof...(args) > 0)
+		show_list(args...);
 }
